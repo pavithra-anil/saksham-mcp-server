@@ -1,4 +1,5 @@
 import logging
+import os
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from docs_tool import append_to_doc
