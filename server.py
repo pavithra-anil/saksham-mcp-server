@@ -5,6 +5,11 @@ from pydantic import BaseModel
 from docs_tool import append_to_doc
 from gmail_tool import create_email_draft
 
+# Re-create credentials.json from environment variable for Google libraries
+if os.environ.get("GOOGLE_CREDENTIALS_JSON"):
+    with open("credentials.json", "w") as f:
+        f.write(os.environ.get("GOOGLE_CREDENTIALS_JSON"))
+
 logging.basicConfig(level=logging.INFO)
 # ---------------- LOGGING SETUP ---------------- #
 logging.basicConfig(
