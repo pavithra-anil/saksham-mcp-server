@@ -32,8 +32,17 @@ class EmailInput(BaseModel):
 # ---------------- APPROVAL LAYER ---------------- #
 def approve(action: str, payload: dict) -> bool:
     """
-    Simple CLI-based approval system
+    Approval system:
+    - Local → manual approval
+    - Deployment → auto-approved
     """
+
+    # ✅ Auto-approve in deployment
+    if os.getenv("AUTO_APPROVE", "false").lower() == "true":
+        logger.info(f"{action} auto-approved (AUTO_APPROVE enabled)")
+        return True
+
+    # 🧪 Local CLI approval
     try:
         print("\n-----------------------------")
         print(f"ACTION: {action}")

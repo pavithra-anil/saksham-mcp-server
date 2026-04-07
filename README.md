@@ -17,6 +17,20 @@ This project demonstrates how to build **structured AI tool interfaces with appr
 
 ---
 
+## How to Use in Your Project
+
+1. Run the MCP server:
+   uvicorn server:app --reload
+
+2. Call tools via API:
+   POST /append_to_doc
+   POST /create_email_draft
+
+3. Integrate with your AI workflow:
+   - Generate content using LLM
+   - Send output to these endpoints
+
+---
 ## 📁 Project Structure
 
 
