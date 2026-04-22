@@ -43,9 +43,9 @@ def approve(action: str, payload: dict) -> bool:
     - Deployment → auto-approved
     """
 
-    # ✅ Auto-approve in deployment
-    if os.getenv("AUTO_APPROVE", "false").lower() == "true":
-        logger.info(f"{action} auto-approved (AUTO_APPROVE enabled)")
+    # ✅ Auto-approve in deployment (Render sets RENDER=true automatically)
+    if os.getenv("AUTO_APPROVE", "false").lower() == "true" or os.getenv("RENDER"):
+        logger.info(f"{action} auto-approved (deployment env)")
         return True
 
     # 🧪 Local CLI approval
